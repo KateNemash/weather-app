@@ -29,9 +29,15 @@ li {
   font-size: 64px;
   font-weight: 600;
 }
+a {
+  text-decoration: none;
+}
 .temperature-units {
-  position: relative;
+ position: relative;
  top: -34px;
+}
+.temperature-units .active {
+  color: black;
 }
 .details {
   padding-top: 15px;

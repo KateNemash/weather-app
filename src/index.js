@@ -35,10 +35,11 @@ function updateTime() {
 
 function updateWeather(response) {
   document.querySelector("h1").innerHTML = response.data.name;
+  
+  celsiusTemperature = response.data.main.temp
 
   document.querySelector(".changing-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+    celsiusTemperature);
 
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
@@ -88,13 +89,18 @@ function currentLocation(event) {
 function changeScaleFahrenheit(event) {
   event.preventDefault();
   let mainTemp = document.querySelector(".changing-temp");
-  mainTemp.innerHTML = "81";
+  tempCelsius.classList.remove("active");
+  tempFahrenheit.classList.add("active");
+  let fahrenheitTemp = (celsiusTemperature*9/5)+32;
+  mainTemp.innerHTML = Math.round(fahrenheitTemp);
 }
 
 function changeScaleCelsius(event) {
   event.preventDefault();
+  tempCelsius.classList.add("active");
+  tempFahrenheit.classList.remove("active");
   let mainTemp = document.querySelector(".changing-temp");
-  mainTemp.innerHTML = "27";
+  mainTemp.innerHTML = Math.round(celsiusTemperature);
 }
 
 let currentDate = new Date();
@@ -104,6 +110,8 @@ form.addEventListener("submit", searchCity);
 
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", currentLocation);
+
+let celsiusTemperature = null;
 
 let tempFahrenheit = document.querySelector("#fahrenheit");
 tempFahrenheit.addEventListener("click", changeScaleFahrenheit);
