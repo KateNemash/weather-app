@@ -24,12 +24,21 @@ li {
 .center {
   text-align: center;
 }
-.temperature {
-  font-size: 32px;
-  font-weight: 700;
+
+.changing-temp {
+  font-size: 64px;
+  font-weight: 600;
+}
+.temperature-units {
+  position: relative;
+ top: -34px;
 }
 .sun-icon {
   color: yellow;
   font-size: 70px;
+  padding-top: 15px;
+}
+.details {
+  padding-top: 15px;
 }
 
