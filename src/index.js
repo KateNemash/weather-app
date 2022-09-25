@@ -23,8 +23,16 @@ function updateDate() {
 }
 
 function updateTime() {
+  let hours = currentDate.getHours();
+  if (hours < 10){
+    hours = `0${hours}`
+  }
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10){
+    minutes = `0${minutes}`
+  }
   let h3 = document.querySelector("h3");
-  h3.innerHTML = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
+  h3.innerHTML = `${hours}:${minutes}`;
 }
 
 function updateWeather(response) {
