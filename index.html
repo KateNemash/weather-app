@@ -23,16 +23,23 @@
       <div class="card">
         <div class="card-body">
           <header>
-            <h1>Barcelona</h1>
-            <h2>Sat, 09.07.2022</h2>
-            <h3>13:07</h3>
+            <div class="row">
+              <div class="col">
+                <h1>Barcelona</h1>
+                <h2>Sat, 09.07.2022</h2>
+              </div>
+              <div class="col">
+                <h3>13:07</h3>
+              </div>
+            </div>
           </header>
-          <form class="search" id="search-form">
+          <form class="search " id="search-form">
             <input
               type="text"
               placeholder="Enter a city"
               autofocus="on"
               id="search-input"
+              class="search-input"
             />
             <input type="submit" value="Search" />
             <input type="submit" value="Current" id="current-location" />
@@ -54,7 +61,6 @@
             </div>
           </div>
         </div>
-      </div>
       </div>
       <footer>
         <a href="https://github.com/KateNemash/weather-app" target="_blank">

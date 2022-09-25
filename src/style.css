@@ -6,8 +6,7 @@ h2 {
   font-size: 16px;
 }
 h3 {
-  display: flex;
-  flex-direction: row-reverse;
+  text-align: center;
 }
 li {
   list-style: none;
@@ -18,6 +17,9 @@ li {
 }
 .search {
   margin: 30px auto;
+}
+.search-input {
+  width: 50%;
 }
 .center {
   text-align: center;
@@ -30,9 +32,4 @@ li {
   color: yellow;
   font-size: 70px;
 }
-.weekly {
-  text-align: center;
-}
-.days {
-  text-align: center;
-}
+
