@@ -18,8 +18,7 @@ function updateDate() {
   ];
   let month = months[currentDate.getMonth()];
 
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${day}, ${currentDate.getDate()}.${month}.${currentDate.getFullYear()}`;
+  document.querySelector("h2").innerHTML = `${day}, ${currentDate.getDate()}.${month}.${currentDate.getFullYear()}`;
 }
 
 function updateTime() {
@@ -31,8 +30,7 @@ function updateTime() {
   if (minutes < 10){
     minutes = `0${minutes}`
   }
-  let h3 = document.querySelector("h3");
-  h3.innerHTML = `${hours}:${minutes}`;
+  document.querySelector("h3").innerHTML = `${hours}:${minutes}`;
 }
 
 function updateWeather(response) {
@@ -49,6 +47,9 @@ function updateWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 
   document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(event) {
