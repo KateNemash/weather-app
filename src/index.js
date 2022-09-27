@@ -33,11 +33,10 @@ function updateTime() {
   document.querySelector("h3").innerHTML = `${hours}:${minutes}`;
 }
 
-function updateForecast () {
+function updateForecast (response) {
+  console.log (response);
   let weatherForecast = document.querySelector("#forecast");
-  
   let days = ["Wed", "Thur", "Fri", "Sat", "Sun"];
-
   let forecastHTML = `<div class="row">`;
 
   days.forEach(function(day){
@@ -62,30 +61,33 @@ function updateForecast () {
               </div>
     `;
   });
-
   forecastHTML = forecastHTML + `</div>`;
-
   weatherForecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "6d68aadfacdd4f5163bc273049a0cf2d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(updateForecast);
 }
 
 function updateWeather(response) {
   document.querySelector("h1").innerHTML = response.data.name;
-  
-  celsiusTemperature = response.data.main.temp
+  celsiusTemperature = response.data.main.temp;
 
   document.querySelector(".changing-temp").innerHTML = Math.round(
     celsiusTemperature);
-
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
   );
-
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-
   document.querySelector("#wind-speed").innerHTML = response.data.wind.speed;
+  
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 function searchCity(event) {
