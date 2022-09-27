@@ -33,6 +33,41 @@ function updateTime() {
   document.querySelector("h3").innerHTML = `${hours}:${minutes}`;
 }
 
+function updateForecast () {
+  let weatherForecast = document.querySelector("#forecast");
+  
+  let days = ["Wed", "Thur", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + `
+    
+              <div class="col">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="forecast-days">
+                      ${day}
+                    </div>
+                    <img src="https://openweathermap.org/img/wn/01n@2x.png"
+                    alt=""
+                    width="50"
+                    />
+                    <div class="forecast-temperatures">
+                      <span class="forecast-temperature-max">30°</span>
+                      <span class="forecast-temperature-min">23°</span>
+                    </div>
+                 </div>
+                </div>
+              </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  weatherForecast.innerHTML = forecastHTML;
+}
+
 function updateWeather(response) {
   document.querySelector("h1").innerHTML = response.data.name;
   
@@ -122,3 +157,4 @@ tempCelsius.addEventListener("click", changeScaleCelsius);
 updateDate();
 updateTime();
 search("Barcelona");
+updateForecast();
